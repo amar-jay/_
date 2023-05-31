@@ -1,0 +1,10 @@
+production: true
+gcpCredentialPath: './gcp.txt'
+port: 4000
+
+logging:
+  type: 'json'
+
+livekit:
+  url: 'https://localhost:7881'
+  botIdentity: 'comrade'
