@@ -4,6 +4,9 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/fiber/v2/middleware/recover"
+	//logger middleware for gofiber
 )
 
 // Server is the main server struct and contains fiber and other dependencies
@@ -12,6 +15,9 @@ type Server struct {
 }
 
 func NewServer() *Server {
+	conf := fiber.Config{
+		Marshal
+	}
 	App := fiber.New()
 	s := &Server{App}
 	s.middleware()
@@ -35,6 +41,8 @@ func (s *Server) Stop() {
 
 // middleware
 func (s *Server) middleware() {
+	s.App.Use(logger.New())
+	s.App.Use(recover.New())
 	s.App.Use(func(c *fiber.Ctx) error {
 		// print url requested
 		fmt.Printf("request [from: %s, to: %s]\n", c.IP(), c.OriginalURL())

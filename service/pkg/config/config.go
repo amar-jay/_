@@ -5,7 +5,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	e "github.com/amar-jay/comrade/pkg/error"
+	e "github.com/amar-jay/comrade/pkg/errors"
 	"github.com/joho/godotenv"
 	"github.com/livekit/protocol/logger"
 )
@@ -26,10 +26,12 @@ type LiveKitConfig struct {
 	TestToken   string
 	Url         string `yaml:"url"`
 	BotIdentity string `yaml:"botIdentity"`
+	BotLanguage string `yaml:"botLanguage"`
 }
 
 var (
 	BotIdentity string = "comrade"
+	BotLanguage string = "english"
 )
 
 // Load loads the config from a file and environment variables
@@ -57,11 +59,11 @@ func New(content []byte) (*Config, error) {
 	livekitSecret := os.Getenv("LIVEKIT_API_SECRET")
 
 	if livekitApikey == "" {
-		return nil, e.ErrInvalidEnv
+		return nil, e.ErrInvalidEnv("LIVEKIT_API_KEY")
 	}
 
 	if livekitSecret == "" {
-		return nil, e.ErrInvalidEnv
+		return nil, e.ErrInvalidEnv("LIVEKIT_API_SECRET")
 	}
 
 	conf.Livekit.ApiKey = livekitApikey
@@ -69,6 +71,7 @@ func New(content []byte) (*Config, error) {
 	conf.Livekit.TestToken = os.Getenv("LIVEKIT_TEST_TOKEN")
 
 	BotIdentity = conf.Livekit.BotIdentity
+	BotLanguage = conf.Livekit.BotLanguage
 
 	return &conf, nil
 }

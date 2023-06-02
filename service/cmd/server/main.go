@@ -58,6 +58,7 @@ func main() {
 
 func runServer(c *cli.Context) error {
 
+	println("starting server")
 	// load config
 	configFile := c.String("config")
 

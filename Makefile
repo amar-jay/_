@@ -1,11 +1,12 @@
 run:
-	$(MAKE) start-service
-	$(MAKE) start-frontend
+	$(MAKE) services
+	$(MAKE) app 
 
-start-service:
+services:
+
 	cd service && go run ./cmd/server/main.go --port 8080 
 
-start-frontend:
+frontend:
 	cd app && pnpm run start
 
 install:
