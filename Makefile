@@ -1,6 +1,6 @@
 run:
-	start-service
-	start-frontend
+	$(MAKE) start-service
+	$(MAKE) start-frontend
 
 start-service:
 	cd service && go run ./cmd/server/main.go --port 8080 
