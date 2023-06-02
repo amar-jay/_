@@ -1,4 +1,5 @@
-production: true
+name: 'comrade'
+production: false 
 gcpCredentialPath: './gcp.txt'
 port: 4000
 

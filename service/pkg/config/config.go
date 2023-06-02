@@ -13,6 +13,7 @@ import (
 // Config is the main configuration object for the server
 
 type Config struct {
+	AppName        string        `yaml:"name"`
 	Port           int           `yaml:"port"`
 	Logger         logger.Config `yaml:"logger"`
 	Production     bool          `yaml:"production"`
@@ -32,6 +33,8 @@ type LiveKitConfig struct {
 var (
 	BotIdentity string = "comrade"
 	BotLanguage string = "english"
+	Production  bool   = false
+	AppName     string = "comrade"
 )
 
 // Load loads the config from a file and environment variables
@@ -43,7 +46,7 @@ func New(content []byte) (*Config, error) {
 		return nil, err
 	}
 
-	if conf.Production {
+	if !conf.Production {
 		err = godotenv.Load(".env.local")
 		if err != nil {
 			return nil, err
@@ -72,6 +75,8 @@ func New(content []byte) (*Config, error) {
 
 	BotIdentity = conf.Livekit.BotIdentity
 	BotLanguage = conf.Livekit.BotLanguage
+	Production = conf.Production
+	AppName = conf.AppName
 
 	return &conf, nil
 }

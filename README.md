@@ -28,5 +28,12 @@ Currently, our main market segment is education.
 - [ ] Gstreamer
 - [ ] ffmpeg download
 - [ ] telemetry
-- [ ] Openai integration
+- [x] Openai integration
 - [ ] Speech to text integration
+
+## How to use
+```bash
+    cd service && \
+    mv .env.example .env && \
+    mv config.example.json config.json
+```
