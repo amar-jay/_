@@ -4,3 +4,13 @@ export interface NavItem {
   disabled?: boolean
   external?: boolean
 }
+
+export interface CustomError {
+  message: string
+}
+
+export interface SessionProps {
+  roomName: string
+  identity: string
+
+}
