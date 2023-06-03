@@ -101,7 +101,7 @@ func runServer(c *cli.Context) error {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
 
-	s := server.NewServer()
+	s := server.NewServer(Config)
 	speechService, err := service.NewSpeechAI(&service.AIConfig{Config: Config, SstClient: nil, TtsClient: nil})
 	speechService.Handle(s.App.Group("/speech"))
 
