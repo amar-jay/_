@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/amar-jay/comrade/pkg/config"
