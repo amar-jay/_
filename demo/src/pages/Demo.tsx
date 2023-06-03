@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import { enableMediaStream, disableMediaStream } from "../utils/microphone";
 import { Video } from "../components/video";
 import {deviceInfo} from "../utils/deviceInfo";
-import { handleTransport} from "../ws";
 // import * as Mediasoup from "mediasoup-client";
 
 export function Demo () {
@@ -23,7 +22,7 @@ export function Demo () {
 	enableMediaStream("#localVideo", {audio: true, video: true});
 	}
 	run().then(() => {
-		handleTransport();
+		//djlk
 	});
 }
 	, []);
