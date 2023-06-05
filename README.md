@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./demo/demo/public/VideoCity.svg" width="75%" alt="videocity banner">
+<img src="./VideoCity.svg" width="75%" alt="videocity banner">
 </p>
 <br/>
 <h3 align="center">
